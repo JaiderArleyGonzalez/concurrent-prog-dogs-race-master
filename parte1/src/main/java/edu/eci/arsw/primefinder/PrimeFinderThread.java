@@ -6,15 +6,15 @@ import java.util.List;
 public class PrimeFinderThread extends Thread {
 
 	private int a, b;
-	private long startTime, endTime;
+	private long startTime;
 	private List<Integer> primes = new LinkedList<Integer>();
-	private String name;
+	private boolean pause;
 
-	public PrimeFinderThread(int a, int b, String name) {
+	public PrimeFinderThread(int a, int b) {
 		super();
 		this.a = a;
 		this.b = b;
-		this.name = name;
+		pause = false;
 
 	}
 
@@ -23,6 +23,14 @@ public class PrimeFinderThread extends Thread {
 			if (isPrime(i)) {
 				primes.add(i);
 				// System.out.println(i);
+				if(pause){
+					try {
+						wait();
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
 			}
 		}
 
@@ -35,6 +43,14 @@ public class PrimeFinderThread extends Thread {
 		return elapsedTimeSeconds;
 	}
 
+	public void pause(){
+		pause = true;
+	}
+
+	public synchronized void play(){
+		pause = false;
+		notify();
+	}
 	public void setStartTime(long startTime) {
 		this.startTime = startTime;
 	}
