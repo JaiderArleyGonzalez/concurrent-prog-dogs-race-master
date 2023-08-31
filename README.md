@@ -71,7 +71,7 @@ Taller.
     resultados.
 
     <b>Sincronización:</b>
-    ![](./img/media/sincronización.png)
+    ![](./img/media/Sincronización.png)
 4.  Implemente las funcionalidades de pausa y continuar. Con estas,
     cuando se haga clic en ‘Stop’, todos los hilos de los galgos
     deberían dormirse, y cuando se haga clic en ‘Continue’ los mismos
