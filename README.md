@@ -2,6 +2,8 @@ Escuela Colombiana de Ingeniería
 
 Arquitecturas de Software – ARSW
 
+Miguel Ángel Barrera Diaz - Jaider Arley Gonzalez Arias
+
 ####Taller – programación concurrente, condiciones de carrera y sincronización de hilos. EJERCICIO INDIVIDUAL O EN PAREJAS.
 
 #####Parte I – Antes de terminar la clase.
@@ -21,7 +23,7 @@ Creación, puesta en marcha y coordinación de hilos.
 3. Lo que se le ha pedido es: debe modificar la aplicación de manera que cuando hayan transcurrido 5 segundos desde que se inició la ejecución, se detengan todos los hilos y se muestre el número de primos encontrados hasta el momento. Luego, se debe esperar a que el usuario presione ENTER para reanudar la ejecución de los mismo.
 
     <b>Tipo de salida:</b>
-    
+
     ![](./img/media/salida.png)
 
 
@@ -52,6 +54,8 @@ Taller.
     a.  La acción de iniciar la carrera y mostrar los resultados se realiza a partir de la línea 38 de MainCanodromo.
 
     b.  Puede utilizarse el método join() de la clase Thread para sincronizar el hilo que inicia la carrera, con la finalización de los hilos de los galgos.
+    
+    ![](./img/media/join.png)
 
 2.  Una vez corregido el problema inicial, corra la aplicación varias
     veces, e identifique las inconsistencias en los resultados de las
@@ -60,15 +64,21 @@ Taller.
     dichas inconsistencias). A partir de esto, identifique las regiones
     críticas () del programa.
 
+    <b>Región crítica:</b>
+    ![](./img/media/regionCritica.png)
 3.  Utilice un mecanismo de sincronización para garantizar que a dichas
     regiones críticas sólo acceda un hilo a la vez. Verifique los
     resultados.
 
+    <b>Sincronización:</b>
+    ![](./img/media/sincronización.png)
 4.  Implemente las funcionalidades de pausa y continuar. Con estas,
     cuando se haga clic en ‘Stop’, todos los hilos de los galgos
     deberían dormirse, y cuando se haga clic en ‘Continue’ los mismos
     deberían despertarse y continuar con la carrera. Diseñe una solución que permita hacer esto utilizando los mecanismos de sincronización con las primitivas de los Locks provistos por el lenguaje (wait y notifyAll).
 
+    la clase "Monitor" actúa como el monitor común. Los hilos se crean en la clase "MainCanodromo" y esperarán en el método esperarSiSuspendido() hasta que se invoque reanudarHilos() en la instancia de Monitor.
+    ![](./img/media/monitor.png)
 
 ## Criterios de evaluación
 
